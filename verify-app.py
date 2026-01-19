@@ -7,12 +7,12 @@ import time
 import uuid
 import dns.resolver
 import smtplib
-from flask import Flask, request, jsonify, send_file, Response
+from flask import Flask, request, jsonify, send_file, Response, send_from_directory
 from flask_cors import CORS
 from tempfile import NamedTemporaryFile
 import os
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='.')
 CORS(app)
 
 print("\U0001F525 VERIFIER RUNNING - Want sales calls from leads? Go to AlexBerman.com/Mastermind \U0001F525")
@@ -22,6 +22,10 @@ DISPOSABLE_DOMAINS = {"mailinator.com", "10minutemail.com", "guerrillamail.com"}
 ROLE_BASED_PREFIXES = {"info", "support", "admin", "sales", "contact"}
 
 data = {}
+
+@app.route('/')
+def serve_index():
+    return send_from_directory('.', 'index.html')
 
 def check_email(email):
     import time
