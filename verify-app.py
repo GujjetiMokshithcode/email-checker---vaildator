@@ -12,7 +12,7 @@ from flask_cors import CORS
 from tempfile import NamedTemporaryFile
 import os
 
-os.system("pip install flask flask-cors dnspython")
+os.system("pip install flask flask-cors dnspython dns")
 
 app = Flask(__name__)
 CORS(app)
