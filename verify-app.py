@@ -10,6 +10,9 @@ import smtplib
 from flask import Flask, request, jsonify, send_file, Response
 from flask_cors import CORS
 from tempfile import NamedTemporaryFile
+import os
+
+os.system("pip install flask flask-cors dnspython")
 
 app = Flask(__name__)
 CORS(app)
